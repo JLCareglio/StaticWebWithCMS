@@ -5,18 +5,83 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TP2 - Ejercicio 5</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TP2 - Ejercicio 13</title>
 </head>
 
 <body>
   <header>
+    <h1>Agencia de Empleos Temporarios</h1>
+    <hr>
   </header>
   <main>
     <section>
       <article>
+        <h2>Trabaja con nosotros, deja tu curriculum:</h2>
+        <form action="/curriculum_vitae.php">
+          <label for="nombres">Nombres:
+            <input type="text" id="nombres" name="nombres" value="" required>
+          </label>
+          <label for="apellidos">Apellidos:
+            <input type="text" id="apellidos" name="apellidos" value="" required><br><br>
+          </label>
+          Turno de trabajo: <br>
+          <input type="radio" id="mañana" name="turno" value="mañana">
+          <label for="mañana">Mañana</label><br>
+          <input type="radio" id="tarde" name="turno" value="tarde">
+          <label for="tarde">Tarde</label><br>
+          <input type="radio" id="noche" name="turno" value="noche">
+          <label for="noche">Noche</label> <br>
+          <input type="radio" id="cualquiera" name="turno" value="cualquiera" checked>
+          <label for="cualquiera">Cualquier turno</label> <br><br>
+          <label for="sueldo">
+            Sueldo pretendido:
+            <input type="number" name="sueldo" id="sueldo">
+          </label><br><br>
+          <label for="puesto">
+            Puesto/s donde prefiere ser ubicado:
+            <select name="puesto" id="puesto">
+              <option value="">-- Seleccione uno --</option>
+              <option value="CEO">CEO</option>
+              <option value="dg">Diseñador Grafico</option>
+              <option value="pf">Programador FrontEnd</option>
+              <option value="pb">Programador BackEnd</option>
+              <option value="lp">Limpia Pisos</option>
+            </select>
+          </label><br><br>
+          <label for="civil">
+            Estado civil:
+            <select name="civil" id="civil" required>
+              <option value="">-- Seleccione uno --</option>
+              <option value="Soltero">Soltero</option>
+              <option value="Casado">Casado</option>
+              <option value="Divorciado">Divorciado</option>
+              <option value="Viudo">Viudo</option>
+            </select>
+          </label><br><br>
+          Cantidad de hijos: <br>
+          menores de 12 años:
+          <input type="number" id="hijos12" name="hijos12" value="0" min="0"><br>
+          entre 12 y 21 años:
+          <input type="number" id="hijos12_21" name="hijos12_21" value="0" min="0"><br>
+          mayores de 21 años:
+          <input type="number" id="hijos21" name="hijos21" value="0" min="0"><br><br>
+          ¿Posee pasaporte? <br>
+          <input type="radio" id="psi" name="pasaporte" value="Si">
+          <label for="psi">Si</label>
+          <input type="radio" id="pno" name="pasaporte" value="No" checked>
+          <label for="pno">No</label> <br><br>
+          <label for="dni">
+            Documento de identidad (DNI):
+            <input type="number" name="dni" id="dni"><br><br>
+          </label>
+          <label for="cv">Curriculum Vitae (subir en formato PDF):
+            <input type="file" name="cv" id="cv" accept="application/pdf">
+          </label><br><br>
+          <input type=" submit" value="Enviar">
+        </form>
       </article>
+      <hr>
     </section>
   </main>
 </body>
-
-</html>
