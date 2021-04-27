@@ -17,7 +17,7 @@
   <main>
     <section>
       <article>
-        <h2>Trabaja con nosotros, deja tu curriculum:</h2>
+        <h2>Trabaja con nosotros, dejanos tus datos:</h2>
         <form action="/curriculum_vitae.php">
           <label for="nombres">Nombres:
             <input type="text" id="nombres" name="nombres" value="" required>
@@ -25,6 +25,15 @@
           <label for="apellidos">Apellidos:
             <input type="text" id="apellidos" name="apellidos" value="" required><br><br>
           </label>
+          <label for="dni">
+            Documento de identidad (DNI):
+            <input type="number" name="dni" id="dni"><br><br>
+          </label>
+          ¿Posee pasaporte? <br>
+          <input type="radio" id="psi" name="pasaporte" value="Si">
+          <label for="psi">Si</label>
+          <input type="radio" id="pno" name="pasaporte" value="No" checked>
+          <label for="pno">No</label> <br><br>
           Turno de trabajo: <br>
           <input type="radio" id="mañana" name="turno" value="mañana">
           <label for="mañana">Mañana</label><br>
@@ -66,17 +75,11 @@
           <input type="number" id="hijos12_21" name="hijos12_21" value="0" min="0"><br>
           mayores de 21 años:
           <input type="number" id="hijos21" name="hijos21" value="0" min="0"><br><br>
-          ¿Posee pasaporte? <br>
-          <input type="radio" id="psi" name="pasaporte" value="Si">
-          <label for="psi">Si</label>
-          <input type="radio" id="pno" name="pasaporte" value="No" checked>
-          <label for="pno">No</label> <br><br>
-          <label for="dni">
-            Documento de identidad (DNI):
-            <input type="number" name="dni" id="dni"><br><br>
-          </label>
           <label for="cv">Curriculum Vitae (subir en formato PDF):
             <input type="file" name="cv" id="cv" accept="application/pdf">
+          </label><br><br>
+          <label for="portafolio">Portafolio (opcional): <br>
+            <textarea id="portafolio" name="portafolio" cols="70" rows="5"></textarea>
           </label><br><br>
           <input type=" submit" value="Enviar">
         </form>
