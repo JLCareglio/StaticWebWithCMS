@@ -35,14 +35,13 @@
           <input type="radio" id="pno" name="pasaporte" value="No" checked>
           <label for="pno">No</label> <br><br>
           Turno de trabajo: <br>
-          <input type="radio" id="mañana" name="turno" value="mañana">
-          <label for="mañana">Mañana</label><br>
-          <input type="radio" id="tarde" name="turno" value="tarde">
-          <label for="tarde">Tarde</label><br>
-          <input type="radio" id="noche" name="turno" value="noche">
-          <label for="noche">Noche</label> <br>
-          <input type="radio" id="cualquiera" name="turno" value="cualquiera" checked>
-          <label for="cualquiera">Cualquier turno</label> <br><br>
+          <select name="turno" id="turno" required>
+            <option value="">-- Seleccione uno --</option>
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+            <option value="Cualquiera">Cualquier turno</option>
+          </select><br><br>
           <label for="sueldo">
             Sueldo pretendido:
             <input type="number" name="sueldo" id="sueldo">
