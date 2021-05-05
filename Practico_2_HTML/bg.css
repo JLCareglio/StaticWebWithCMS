@@ -15,7 +15,7 @@ body {
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
   position: relative;
-  height: 1034px;
+  height: 1033px;
   width: 100%;
   overflow: hidden;
   padding: 0;
@@ -27,7 +27,7 @@ body {
     background-size: 400% 400%;
     animation: Gradient 15s ease infinite;
     position: relative;
-    height: 1074px;
+    height: 1073px;
     width: 100%;
     overflow: hidden;
     padding: 0;

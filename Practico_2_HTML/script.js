@@ -7,17 +7,13 @@ for (i = 0; i < coll.length; i++) {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
     if (content.style.maxHeight) {
-      background[0].style.height =
-        Number(background[0].style.height) -
-        Number(content.style.maxHeight) +
-        "px";
       content.style.maxHeight = null;
+      background[0].style.height =
+        background[0].offsetHeight - content.scrollHeight + "px";
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
       background[0].style.height =
-        Number(background[0].style.height) +
-        Number(content.style.maxHeight) +
-        "px";
+        background[0].offsetHeight + content.scrollHeight + "px";
     }
   });
 }
