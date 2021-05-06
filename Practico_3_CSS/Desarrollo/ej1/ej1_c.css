@@ -1,0 +1,32 @@
+/* Ejercicio 1  Defina un estilo utilizando el
+selector de etiqueta de manera tal que: */
+
+/* Letra rojo para todos los encabezados. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: red;
+}
+/* Las imágenes se encuentren centradas. */
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%; /*Tamaño ajustado al 95% del ancho de la pagina*/
+}
+figure {
+  text-align: center; /*Centramos el texto del figcaption de la imagen*/
+}
+/* tipo de letra es Comics y tamaño 8 en los párrafos */
+/* NOTA: Comics Sans es de pago por lo que se usara en
+su lugar a la fuenta Itim*/
+body {
+  font-family: "Itim", cursive;
+}
+p {
+  font-size: 8px;
+  /* font-size: 8vh; */
+}
