@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
   <title>StaticWebWithCMD_Example</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,6 +13,10 @@
 <body>
   <header class="header">
     <h1>StaticWeb With CMD</h1>
+    <label class="switch">
+      <input type="checkbox" id="darkmode">
+      <span class="slider"></span>
+    </label>
   </header>
   <main>
     <section id="seccion_texto">
@@ -32,9 +37,10 @@
     </section>
   </main>
   <footer>
-    <p>Autor: Jesús Lautaro Careglio Albornoz</p>
+    <small>Autor: Jesús Lautaro Careglio Albornoz</small>
   </footer>
-  <script src="index.js" type="module"></script>
+  <script src="darkmode.js"></script>
+  <script src="fetch.js"></script>
 </body>
 
 </html>

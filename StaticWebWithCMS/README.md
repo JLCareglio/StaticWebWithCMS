@@ -8,6 +8,6 @@ Una ventaja es que se podra actualizar el contenido sin necesidad de pasar por e
 
 https://jlcareglio.github.io/DWEB/StaticWebWithCMS/
 
-### Enlace del Google Sheet que altera al sitio web (por favor no destruyas la estructura del documento):
+### Enlace del Google Sheet que altera al sitio web:
 
 https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0

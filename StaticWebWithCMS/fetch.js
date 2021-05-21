@@ -26,7 +26,10 @@ function UpdateCitas() {
       const r_citas = citas.feed.entry;
       const random = Math.floor(Math.random() * r_citas.length);
       document.querySelector("#cita").innerHTML =
-        r_citas[random].gsx$citas.$t + " ~" + r_citas[random].gsx$autores.$t;
+        r_citas[random].gsx$citas.$t +
+        "<br><strong>Autor:" +
+        r_citas[random].gsx$autores.$t +
+        "</strong>";
     });
 }
 // Update DataBase: Material
