@@ -1,0 +1,68 @@
+#seccion_cita,
+#seccion_material,
+#seccion_imagen {
+  display: none;
+}
+body {
+  text-align: center;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #222222;
+  padding: 0px;
+  margin: 0px auto;
+  max-width: 900px;
+}
+.header,
+footer {
+  background-color: #000000;
+  padding: 10px;
+  margin: 0px;
+}
+footer {
+  font-size: smaller;
+}
+main {
+  background-color: #333333;
+}
+h1,
+h2 {
+  color: #98ca3f;
+  margin: 0px;
+}
+h2 {
+  padding-top: 4vh;
+}
+p,
+ol,
+figure {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+figcaption {
+  padding-bottom: 4vh;
+}
+a:link {
+  color: rgb(0, 220, 0);
+}
+a:visited {
+  color: rgb(0, 180, 0);
+}
+a:hover {
+  color: hotpink;
+}
+a:active {
+  color: blue;
+}
+img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+ol {
+  text-align: left;
+  max-width: 300px;
+  margin: auto;
+}
