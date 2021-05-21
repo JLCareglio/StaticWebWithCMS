@@ -1,12 +1,12 @@
-const btn = document.querySelector(".btn-toggle");
 const btn_darkmode = document.getElementById("darkmode");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "dark") {
+var theme = prefersDarkScheme.matches ? "dark" : "light";
+const savedTheme = localStorage.getItem("theme") || theme;
+if (savedTheme == "dark") {
   btn_darkmode.checked = false;
   document.body.classList.toggle("dark-theme");
-} else if (currentTheme == "light") {
+} else if (savedTheme == "light") {
   btn_darkmode.checked = true;
   document.body.classList.toggle("light-theme");
 }
