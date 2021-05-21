@@ -1,15 +1,14 @@
-const SPREADSHEETLIST =
+const SPREADSHEET_ID =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
-const SPREADSHEETCELL =
-  "https://spreadsheets.google.com/feeds/cells/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
 // Update DataBase: Texto
-fetch(SPREADSHEETCELL + "/1/public/values?alt=json")
+fetch(SPREADSHEET_ID + "/otao8gj/public/values?alt=json")
   .then((resp) => resp.json())
   .then((main) => {
-    document.querySelector("#texto").innerHTML = main.feed.entry[16].gs$cell.$t;
+    document.querySelector("#texto").innerHTML =
+      main.feed.entry[0].gsx$parrafo.$t;
   });
 // Update DataBase: Secciones
-fetch(SPREADSHEETLIST + "/of7ss6r/public/values?alt=json")
+fetch(SPREADSHEET_ID + "/of7ss6r/public/values?alt=json")
   .then((resp) => resp.json())
   .then((secciones) => {
     const r_secciones = secciones.feed.entry;
@@ -20,7 +19,7 @@ fetch(SPREADSHEETLIST + "/of7ss6r/public/values?alt=json")
 // Update DataBase: Citas Informaticas
 function UpdateCitas() {
   document.getElementById("seccion_cita").style.display = "inline";
-  fetch(SPREADSHEETLIST + "/od6/public/values?alt=json")
+  fetch(SPREADSHEET_ID + "/od6/public/values?alt=json")
     .then((resp) => resp.json())
     .then((citas) => {
       const r_citas = citas.feed.entry;
@@ -35,7 +34,7 @@ function UpdateCitas() {
 // Update DataBase: Material
 function UpdateMaterial() {
   document.getElementById("seccion_material").style.display = "inline";
-  fetch(SPREADSHEETLIST + "/oq6pdsq/public/values?alt=json")
+  fetch(SPREADSHEET_ID + "/oq6pdsq/public/values?alt=json")
     .then((resp) => resp.json())
     .then((materiales) => {
       const r_materiales = materiales.feed.entry;
