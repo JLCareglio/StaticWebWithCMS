@@ -4,8 +4,10 @@ const SPREADSHEET_ID =
 fetch(SPREADSHEET_ID + "/otao8gj/public/values?alt=json")
   .then((resp) => resp.json())
   .then((main) => {
-    document.querySelector("#texto").innerHTML =
-      main.feed.entry[0].gsx$parrafo.$t;
+    document.querySelector("#texto1").innerHTML =
+      main.feed.entry[0].gsx$contenido.$t;
+    document.querySelector("#texto2").innerHTML =
+      main.feed.entry[1].gsx$contenido.$t;
   });
 // Update DataBase: Secciones
 fetch(SPREADSHEET_ID + "/of7ss6r/public/values?alt=json")

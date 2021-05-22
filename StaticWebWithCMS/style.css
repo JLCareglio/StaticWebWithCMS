@@ -11,13 +11,13 @@ body {
   text-align: center;
   margin: 0px auto;
   padding: 0px;
-  max-width: 768px;
+  max-width: 644px;
   min-width: 320px;
 }
 main {
   background: var(--bkg-color);
   color: var(--text-color);
-  padding: 0px 20px 20px 20px;
+  padding: 5px 20px;
 }
 a {
   color: var(--link-color);
@@ -50,11 +50,6 @@ h2 {
 header,
 footer {
   background-color: #7777;
-}
-
-p,
-figure {
-  margin: 0px;
 }
 
 img {
