@@ -1,3 +1,4 @@
+var placeholders = document.getElementsByClassName("placeholder-content");
 const SPREADSHEET_ID =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
 // Update DataBase: Secciones
@@ -8,17 +9,28 @@ async function fetchSecciones() {
   );
   let json_secciones = await response.json();
   json_secciones = json_secciones.feed.entry;
-  let placeholders = document.getElementsByClassName("placeholder-content");
 
-  json_secciones[0].gsx$mostrar.$t === "TRUE" ? await UpdateIntro() : null;
-  placeholders[0].style.display = "none";
-  json_secciones[1].gsx$mostrar.$t === "TRUE" ? await UpdateCitas() : null;
-  placeholders[1].style.display = "none";
-  json_secciones[2].gsx$mostrar.$t === "TRUE" ? await UpdateRecursos() : null;
-  placeholders[2].style.display = "none";
-  json_secciones[3].gsx$mostrar.$t === "TRUE" ? await UpdateImagenes() : null;
-  placeholders[3].style.display = "none";
+  // Actualizar los contenidos de secciones en cascada:
+  json_secciones[0].gsx$mostrar.$t === "TRUE"
+    ? await UpdateIntro()
+    : (placeholders[0].style.display = "none");
+  json_secciones[1].gsx$mostrar.$t === "TRUE"
+    ? await UpdateCitas()
+    : (placeholders[1].style.display = "none");
+  json_secciones[2].gsx$mostrar.$t === "TRUE"
+    ? await UpdateRecursos()
+    : (placeholders[2].style.display = "none");
+  json_secciones[3].gsx$mostrar.$t === "TRUE"
+    ? await UpdateImagenes()
+    : (placeholders[3].style.display = "none");
   json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
+
+  /* Actualizar los contenidos de seciones de forma simultanea:
+  json_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateIntro() : (placeholders[0].style.display = "none");
+  json_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : (placeholders[1].style.display = "none");
+  json_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : (placeholders[2].style.display = "none");
+  json_secciones[3].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : (placeholders[3].style.display = "none");
+  json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null; */
   return;
 }
 
@@ -33,6 +45,7 @@ async function UpdateIntro() {
       document.querySelector("#texto2").innerHTML =
         main.feed.entry[1].gsx$contenido.$t;
     });
+  placeholders[0].style.display = "none";
   return;
 }
 
@@ -50,6 +63,7 @@ async function UpdateCitas() {
         r_citas[random].gsx$autores.$t +
         "</strong>";
     });
+  placeholders[1].style.display = "none";
   return;
 }
 // Update DataBase: Material
@@ -75,6 +89,7 @@ async function UpdateRecursos() {
           document.getElementById("recursos").appendChild(list);
         });
     });
+  placeholders[2].style.display = "none";
   return;
 }
 // Update DataBase: Imagenes
@@ -94,9 +109,10 @@ async function UpdateImagenes() {
       document.getElementById("imagen").appendChild(img);
       document.getElementById("imagen").appendChild(figcaption);
     });
+  placeholders[3].style.display = "none";
   return;
 }
-async function RunTopSecret() {
+function RunTopSecret() {
   document.getElementById("🚧seccion_topsecret🚧").style.display = "inline";
   document.getElementById("🚧seccion_topsecret🚧").hidden = false;
   console.log("Funcion TopSecreta ejecutada, el codigo es:");
