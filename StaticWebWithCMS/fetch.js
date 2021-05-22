@@ -19,6 +19,7 @@ fetch(SPREADSHEET_ID + "/of7ss6r/public/values?alt=json")
     r_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : null;
     document.getElementById("seccion_introduccion").style.display =
       r_secciones[3].gsx$mostrar.$t === "TRUE" ? "inline" : "none";
+    r_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
   });
 // Update DataBase: Citas Informaticas
 function UpdateCitas() {
@@ -74,4 +75,10 @@ function UpdateImagenes() {
       document.getElementById("imagen").appendChild(img);
       document.getElementById("imagen").appendChild(figcaption);
     });
+}
+function RunTopSecret() {
+  document.getElementById("🚧seccion_topsecret🚧").style.display = "inline";
+  document.getElementById("🚧seccion_topsecret🚧").hidden = false;
+  console.log("Funcion TopSecreta ejecutada, el codigo es:");
+  console.log("🔴🟡🟡🟠🟢🔴🔴🔴🟡🔵🟣🔵⚫");
 }
