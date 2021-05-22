@@ -1,4 +1,4 @@
-## Bienvenido a StaticWebWithCMD
+## Bienvenido a StaticWebWithCMS
 
 En este experimento busco crear una web estatica donde la misma se construya y comlete tomando datos de un Google Sheets.
 
