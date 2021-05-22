@@ -1,36 +1,45 @@
-var placeholders = document.getElementsByClassName("placeholder-content");
 const SPREADSHEET_ID =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
-// Update DataBase: Texto
-fetch(SPREADSHEET_ID + "/otao8gj/public/values?alt=json")
-  .then((resp) => resp.json())
-  .then((main) => {
-    document.querySelector("#texto1").innerHTML =
-      main.feed.entry[0].gsx$contenido.$t;
-    document.querySelector("#texto2").innerHTML =
-      main.feed.entry[1].gsx$contenido.$t;
-  });
 // Update DataBase: Secciones
-fetch(SPREADSHEET_ID + "/of7ss6r/public/values?alt=json")
-  .then((resp) => resp.json())
-  .then((secciones) => {
-    const r_secciones = secciones.feed.entry;
-    document.getElementById("seccion_introduccion").style.display =
-      r_secciones[0].gsx$mostrar.$t === "TRUE" ? "inline" : "none";
-    placeholders[0].style.display = "none";
-    r_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : null;
-    placeholders[1].style.display = "none";
-    r_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : null;
-    placeholders[2].style.display = "none";
-    r_secciones[3].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : null;
-    placeholders[3].style.display = "none";
-    r_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
-    placeholders[4].style.display = "none";
-  });
+fetchSecciones();
+async function fetchSecciones() {
+  const response = await fetch(
+    SPREADSHEET_ID + "/of7ss6r/public/values?alt=json"
+  );
+  let json_secciones = await response.json();
+  json_secciones = json_secciones.feed.entry;
+  let placeholders = document.getElementsByClassName("placeholder-content");
+
+  json_secciones[0].gsx$mostrar.$t === "TRUE" ? await UpdateIntro() : null;
+  placeholders[0].style.display = "none";
+  json_secciones[1].gsx$mostrar.$t === "TRUE" ? await UpdateCitas() : null;
+  placeholders[1].style.display = "none";
+  json_secciones[2].gsx$mostrar.$t === "TRUE" ? await UpdateRecursos() : null;
+  placeholders[2].style.display = "none";
+  json_secciones[3].gsx$mostrar.$t === "TRUE" ? await UpdateImagenes() : null;
+  placeholders[3].style.display = "none";
+  json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
+  return;
+}
+
+// Update DataBase: Introduccion
+async function UpdateIntro() {
+  document.getElementById("seccion_introduccion").style.display = "inline";
+  await fetch(SPREADSHEET_ID + "/otao8gj/public/values?alt=json")
+    .then((resp) => resp.json())
+    .then((main) => {
+      document.querySelector("#texto1").innerHTML =
+        main.feed.entry[0].gsx$contenido.$t;
+      document.querySelector("#texto2").innerHTML =
+        main.feed.entry[1].gsx$contenido.$t;
+    });
+  return;
+}
+
 // Update DataBase: Citas Informaticas
-function UpdateCitas() {
+async function UpdateCitas() {
   document.getElementById("seccion_cita").style.display = "inline";
-  fetch(SPREADSHEET_ID + "/od6/public/values?alt=json")
+  await fetch(SPREADSHEET_ID + "/od6/public/values?alt=json")
     .then((resp) => resp.json())
     .then((citas) => {
       const r_citas = citas.feed.entry;
@@ -41,11 +50,12 @@ function UpdateCitas() {
         r_citas[random].gsx$autores.$t +
         "</strong>";
     });
+  return;
 }
 // Update DataBase: Material
-function UpdateRecursos() {
+async function UpdateRecursos() {
   document.getElementById("seccion_recursos").style.display = "inline";
-  fetch(SPREADSHEET_ID + "/oq6pdsq/public/values?alt=json")
+  await fetch(SPREADSHEET_ID + "/oq6pdsq/public/values?alt=json")
     .then((resp) => resp.json())
     .then((materiales) => {
       const r_materiales = materiales.feed.entry;
@@ -65,12 +75,15 @@ function UpdateRecursos() {
           document.getElementById("recursos").appendChild(list);
         });
     });
+  return;
 }
 // Update DataBase: Imagenes
-function UpdateImagenes() {
+async function UpdateImagenes() {
   document.getElementById("seccion_imagen").style.display = "inline";
   let random = Math.floor(Math.random() * 100);
-  fetch("https://jsonplaceholder.typicode.com/albums/" + random + "/photos")
+  await fetch(
+    "https://jsonplaceholder.typicode.com/albums/" + random + "/photos"
+  )
     .then((resp) => resp.json())
     .then((fotos) => {
       random = Math.floor(Math.random() * fotos.length);
@@ -81,10 +94,12 @@ function UpdateImagenes() {
       document.getElementById("imagen").appendChild(img);
       document.getElementById("imagen").appendChild(figcaption);
     });
+  return;
 }
-function RunTopSecret() {
+async function RunTopSecret() {
   document.getElementById("🚧seccion_topsecret🚧").style.display = "inline";
   document.getElementById("🚧seccion_topsecret🚧").hidden = false;
   console.log("Funcion TopSecreta ejecutada, el codigo es:");
   console.log("🔴🟡🟡🟠🟢🔴🔴🔴🟡🔵🟣🔵⚫");
+  return;
 }
