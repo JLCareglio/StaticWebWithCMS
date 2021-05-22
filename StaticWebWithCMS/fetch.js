@@ -1,3 +1,4 @@
+var placeholders = document.getElementsByClassName("placeholder-content");
 const SPREADSHEET_ID =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
 // Update DataBase: Texto
@@ -14,12 +15,17 @@ fetch(SPREADSHEET_ID + "/of7ss6r/public/values?alt=json")
   .then((resp) => resp.json())
   .then((secciones) => {
     const r_secciones = secciones.feed.entry;
-    r_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : null;
-    r_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : null;
-    r_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : null;
     document.getElementById("seccion_introduccion").style.display =
-      r_secciones[3].gsx$mostrar.$t === "TRUE" ? "inline" : "none";
+      r_secciones[0].gsx$mostrar.$t === "TRUE" ? "inline" : "none";
+    placeholders[0].style.display = "none";
+    r_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : null;
+    placeholders[1].style.display = "none";
+    r_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : null;
+    placeholders[2].style.display = "none";
+    r_secciones[3].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : null;
+    placeholders[3].style.display = "none";
     r_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
+    placeholders[4].style.display = "none";
   });
 // Update DataBase: Citas Informaticas
 function UpdateCitas() {
