@@ -1,5 +1,5 @@
 #seccion_cita,
-#seccion_material,
+#seccion_recursos,
 #seccion_imagen {
   display: none;
 }
@@ -17,7 +17,7 @@ body {
 main {
   background: var(--bkg-color);
   color: var(--text-color);
-  padding: 5px 20px;
+  padding: 10px 20px;
 }
 a {
   color: var(--link-color);

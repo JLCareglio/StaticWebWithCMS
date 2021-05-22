@@ -15,8 +15,10 @@ fetch(SPREADSHEET_ID + "/of7ss6r/public/values?alt=json")
   .then((secciones) => {
     const r_secciones = secciones.feed.entry;
     r_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : null;
-    r_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateMaterial() : null;
+    r_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : null;
     r_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : null;
+    document.getElementById("seccion_introduccion").style.display =
+      r_secciones[3].gsx$mostrar.$t === "TRUE" ? "inline" : "none";
   });
 // Update DataBase: Citas Informaticas
 function UpdateCitas() {
@@ -34,8 +36,8 @@ function UpdateCitas() {
     });
 }
 // Update DataBase: Material
-function UpdateMaterial() {
-  document.getElementById("seccion_material").style.display = "inline";
+function UpdateRecursos() {
+  document.getElementById("seccion_recursos").style.display = "inline";
   fetch(SPREADSHEET_ID + "/oq6pdsq/public/values?alt=json")
     .then((resp) => resp.json())
     .then((materiales) => {
@@ -53,7 +55,7 @@ function UpdateMaterial() {
           let list = document.createElement("li");
           list.appendChild(link);
 
-          document.getElementById("material").appendChild(list);
+          document.getElementById("recursos").appendChild(list);
         });
     });
 }
