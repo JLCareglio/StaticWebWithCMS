@@ -1,4 +1,7 @@
-var placeholders = document.getElementsByClassName("placeholder-content");
+var $ = function (id) {
+  return document.getElementById(id);
+};
+
 const SPREADSHEET_ID =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
 // Update DataBase: Secciones
@@ -13,30 +16,31 @@ async function fetchSecciones() {
   // Actualizar los contenidos de secciones en cascada:
   json_secciones[0].gsx$mostrar.$t === "TRUE"
     ? await UpdateIntro()
-    : (placeholders[0].style.display = "none");
+    : ($("placeholder_sintro").style.display = "none");
   json_secciones[1].gsx$mostrar.$t === "TRUE"
     ? await UpdateCitas()
-    : (placeholders[1].style.display = "none");
+    : ($("placeholder_scita").style.display = "none");
   json_secciones[2].gsx$mostrar.$t === "TRUE"
     ? await UpdateRecursos()
-    : (placeholders[2].style.display = "none");
+    : ($("placeholder_srecursos").style.display = "none");
   json_secciones[3].gsx$mostrar.$t === "TRUE"
     ? await UpdateImagenes()
-    : (placeholders[3].style.display = "none");
+    : ($("placeholder_simagen").style.display = "none");
   json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
 
   /* Actualizar los contenidos de seciones de forma simultanea:
-  json_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateIntro() : (placeholders[0].style.display = "none");
-  json_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : (placeholders[1].style.display = "none");
-  json_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : (placeholders[2].style.display = "none");
-  json_secciones[3].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : (placeholders[3].style.display = "none");
+  json_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateIntro() : ($("placeholder_sintro").style.display = "none");
+  json_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : ($("placeholder_scita").style.display = "none");
+  json_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : ($("placeholder_srecursos").style.display = "none");
+  json_secciones[3].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : ($("placeholder_simagen").style.display = "none");
   json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null; */
   return;
 }
 
 // Update DataBase: Introduccion
 async function UpdateIntro() {
-  document.getElementById("seccion_introduccion").style.display = "inline";
+  $("placeholder_sintro").style.display = "none";
+  $("seccion_introduccion").style.display = "inline";
   await fetch(SPREADSHEET_ID + "/otao8gj/public/values?alt=json")
     .then((resp) => resp.json())
     .then((main) => {
@@ -45,13 +49,14 @@ async function UpdateIntro() {
       document.querySelector("#texto2").innerHTML =
         main.feed.entry[1].gsx$contenido.$t;
     });
-  placeholders[0].style.display = "none";
+  $("placeholder_intro").style.display = "none";
   return;
 }
 
 // Update DataBase: Citas Informaticas
 async function UpdateCitas() {
-  document.getElementById("seccion_cita").style.display = "inline";
+  $("placeholder_scita").style.display = "none";
+  $("seccion_cita").style.display = "inline";
   await fetch(SPREADSHEET_ID + "/od6/public/values?alt=json")
     .then((resp) => resp.json())
     .then((citas) => {
@@ -63,12 +68,13 @@ async function UpdateCitas() {
         r_citas[random].gsx$autores.$t +
         "</strong>";
     });
-  placeholders[1].style.display = "none";
+  $("placeholder_cita").style.display = "none";
   return;
 }
 // Update DataBase: Material
 async function UpdateRecursos() {
-  document.getElementById("seccion_recursos").style.display = "inline";
+  $("placeholder_srecursos").style.display = "none";
+  $("seccion_recursos").style.display = "inline";
   await fetch(SPREADSHEET_ID + "/oq6pdsq/public/values?alt=json")
     .then((resp) => resp.json())
     .then((materiales) => {
@@ -86,15 +92,16 @@ async function UpdateRecursos() {
           let list = document.createElement("li");
           list.appendChild(link);
 
-          document.getElementById("recursos").appendChild(list);
+          $("recursos").appendChild(list);
         });
     });
-  placeholders[2].style.display = "none";
+  $("placeholder_recursos").style.display = "none";
   return;
 }
 // Update DataBase: Imagenes
 async function UpdateImagenes() {
-  document.getElementById("seccion_imagen").style.display = "inline";
+  $("placeholder_simagen").style.display = "none";
+  $("seccion_imagen").style.display = "inline";
   let random = Math.floor(Math.random() * 100);
   await fetch(
     "https://jsonplaceholder.typicode.com/albums/" + random + "/photos"
@@ -106,15 +113,15 @@ async function UpdateImagenes() {
       const figcaption = document.createElement("figcaption");
       img.setAttribute("src", `${fotos[random].url}`);
       figcaption.appendChild(document.createTextNode(`${fotos[random].title}`));
-      document.getElementById("imagen").appendChild(img);
-      document.getElementById("imagen").appendChild(figcaption);
+      $("imagen").appendChild(img);
+      $("imagen").appendChild(figcaption);
     });
-  placeholders[3].style.display = "none";
+  $("placeholder_imagen").style.display = "none";
   return;
 }
 function RunTopSecret() {
-  document.getElementById("🚧seccion_topsecret🚧").style.display = "inline";
-  document.getElementById("🚧seccion_topsecret🚧").hidden = false;
+  $("🚧seccion_topsecret🚧").style.display = "inline";
+  $("🚧seccion_topsecret🚧").hidden = false;
   console.log("Funcion TopSecreta ejecutada, el codigo es:");
   console.log("🔴🟡🟡🟠🟢🔴🔴🔴🟡🔵🟣🔵⚫");
   return;
