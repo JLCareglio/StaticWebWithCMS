@@ -1,0 +1,40 @@
+html {
+  background-color: #97957a;
+  scroll-behavior: smooth;
+  font-family: Helvetica;
+}
+main,
+header {
+  max-width: 744px;
+  margin: auto;
+  background-color: #b9b694;
+}
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+  padding-top: 15px;
+}
+h1 {
+  background-color: black;
+  color: white;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0px;
+}
+p,
+a {
+  padding: 0px 20px 5px 20px;
+  text-align: justify;
+}
+ol {
+  list-style-type: none;
+  margin: auto;
+  padding: 0px;
+  width: 420px;
+}
+ol ol {
+  padding: 0px 0px 10px 20px;
+}
