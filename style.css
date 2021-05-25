@@ -14,7 +14,11 @@ body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  background-color: #fc415a;
+  background-color: #212335;
+}
+main {
+  max-width: 700px;
+  margin: auto;
 }
 h1 {
   color: #fff;
@@ -31,16 +35,11 @@ h2 {
 footer {
   color: #fff;
   background-color: #000;
-  padding: 5px;
+  padding: 5px 0px;
+  max-width: 700px;
+  margin: auto;
 }
-.ejercicios {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
+
 .text-left {
   text-align: left;
 }
@@ -67,126 +66,4 @@ footer {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1dc;
-}
-
-/* ============= Animation background ========= */
-.background {
-  background: linear-gradient(132deg, #fc415a, #591bc5, #212335);
-  background-size: 400% 400%;
-  animation: Gradient 15s ease infinite;
-  position: relative;
-  height: 1033px;
-  width: 100%;
-  overflow: hidden;
-  padding: 0;
-  margin: 0px;
-}
-@media only screen and (max-width: 405px) {
-  .background {
-    background: linear-gradient(132deg, #fc415a, #591bc5, #212335);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 0;
-    margin: 0px;
-  }
-}
-.cube {
-  position: absolute;
-  top: 80vh;
-  left: 45vw;
-  width: 10px;
-  height: 10px;
-  border: solid 1px #d7d4e4;
-  transform-origin: top left;
-  transform: scale(0) rotate(0deg) translate(-50%, -50%);
-  animation: cube 12s ease-in forwards infinite;
-}
-.cube:nth-child(2n) {
-  border-color: #fff;
-}
-.cube:nth-child(2) {
-  animation-delay: 2s;
-  left: 25vw;
-  top: 40vh;
-}
-.cube:nth-child(3) {
-  animation-delay: 4s;
-  left: 75vw;
-  top: 50vh;
-}
-.cube:nth-child(4) {
-  animation-delay: 6s;
-  left: 90vw;
-  top: 10vh;
-}
-.cube:nth-child(5) {
-  animation-delay: 8s;
-  left: 10vw;
-  top: 85vh;
-}
-.cube:nth-child(6) {
-  animation-delay: 10s;
-  left: 50vw;
-  top: 10vh;
-}
-/* cont */
-.cont {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-/* Logo */
-.logo {
-  position: absolute;
-  width: 65px;
-  height: 40px;
-  background: #efeef5;
-  margin: 20px 63px;
-  float: left;
-  transform: rotate(-30deg);
-}
-.logo span {
-  color: #591bc5;
-  font-size: 2em;
-  line-height: 1.4;
-  padding-left: 5px;
-  font-weight: bold;
-}
-@media only screen and (max-width: 642px) {
-  .logo {
-    margin: 20px 5px;
-  }
-}
-@media only screen and (max-width: 512px) {
-  .logo {
-    visibility: hidden;
-  }
-}
-/* Animate Background*/
-@keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@keyframes cube {
-  from {
-    transform: scale(0) rotate(0deg) translate(-50%, -50%);
-    opacity: 1;
-  }
-  to {
-    transform: scale(20) rotate(960deg) translate(-50%, -50%);
-    opacity: 0;
-  }
 }
