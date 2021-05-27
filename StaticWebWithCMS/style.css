@@ -31,7 +31,6 @@ h1 {
   font-size: 32px;
 }
 @media only screen and (max-width: 500px) {
-  /* For mobile phones: */
   h1 {
     margin: 0px 0px 0px 64px;
     width: 186px;

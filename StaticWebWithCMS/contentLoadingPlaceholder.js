@@ -1,5 +1,5 @@
 /* Este Script sirve para construir los placeholders de carga de contenido,
-en las etiquetas '<div class="placeholder-content-X"></div>'reemplaza la X
+en las etiquetas '<div class="placeholder-content-X"></div>' reemplaza la X
 por un numero superior a 3 y este cambiara el largo del placeholder*/
 
 var divs = document.getElementsByTagName("div");

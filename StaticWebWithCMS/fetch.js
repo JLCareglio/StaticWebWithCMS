@@ -1,19 +1,23 @@
+/* Script encargado de construir la pagina usando como base de datos
+una Hoja de Calculo de Google externa */
+
+// Permite el uso de $ como abreviación a document.getElementById
 var $ = function (id) {
   return document.getElementById(id);
 };
 
-const SPREADSHEET_ID =
+// Esta es la referencia a la Hoja de Calculo de Google externa
+const SPREADSHEET =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
-// Update DataBase: Secciones
+
+// En la hoja Secciones vemos cuales estan para mostrar luego se actualizan y se muestran.
 fetchSecciones();
 async function fetchSecciones() {
-  const response = await fetch(
-    SPREADSHEET_ID + "/of7ss6r/public/values?alt=json"
-  );
+  const response = await fetch(SPREADSHEET + "/of7ss6r/public/values?alt=json");
   let json_secciones = await response.json();
   json_secciones = json_secciones.feed.entry;
 
-  // Actualizar los contenidos de secciones en cascada:
+  // Actualizar los contenidos de secciones uno a uno 😎:
   json_secciones[0].gsx$mostrar.$t === "TRUE"
     ? await UpdateIntro()
     : ($("placeholder_sintro").style.display = "none");
@@ -28,8 +32,8 @@ async function fetchSecciones() {
     : ($("placeholder_simagen").style.display = "none");
   json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
 
-  /* Actualizar los contenidos de seciones de forma simultanea:
-  json_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateIntro() : ($("placeholder_sintro").style.display = "none");
+  // Actualizar los contenidos de seciones de forma simultanea 👩‍💻:
+  /*   json_secciones[0].gsx$mostrar.$t === "TRUE" ? UpdateIntro() : ($("placeholder_sintro").style.display = "none");
   json_secciones[1].gsx$mostrar.$t === "TRUE" ? UpdateCitas() : ($("placeholder_scita").style.display = "none");
   json_secciones[2].gsx$mostrar.$t === "TRUE" ? UpdateRecursos() : ($("placeholder_srecursos").style.display = "none");
   json_secciones[3].gsx$mostrar.$t === "TRUE" ? UpdateImagenes() : ($("placeholder_simagen").style.display = "none");
@@ -37,11 +41,11 @@ async function fetchSecciones() {
   return;
 }
 
-// Update DataBase: Introduccion
+// Update & show: 😎 Introducción 📄
 async function UpdateIntro() {
   $("placeholder_sintro").style.display = "none";
   $("seccion_introduccion").style.display = "inline";
-  await fetch(SPREADSHEET_ID + "/otao8gj/public/values?alt=json")
+  await fetch(SPREADSHEET + "/otao8gj/public/values?alt=json")
     .then((resp) => resp.json())
     .then((main) => {
       document.querySelector("#texto1").innerHTML =
@@ -53,11 +57,11 @@ async function UpdateIntro() {
   return;
 }
 
-// Update DataBase: Citas Informaticas
+// Update & show: 🤯 Cita Informática Aleatoria 🎲
 async function UpdateCitas() {
   $("placeholder_scita").style.display = "none";
   $("seccion_cita").style.display = "inline";
-  await fetch(SPREADSHEET_ID + "/od6/public/values?alt=json")
+  await fetch(SPREADSHEET + "/od6/public/values?alt=json")
     .then((resp) => resp.json())
     .then((citas) => {
       const r_citas = citas.feed.entry;
@@ -71,11 +75,12 @@ async function UpdateCitas() {
   $("placeholder_cita").style.display = "none";
   return;
 }
-// Update DataBase: Material
+
+// Update & show: 💡 Recursos (Aprende) 💡
 async function UpdateRecursos() {
   $("placeholder_srecursos").style.display = "none";
   $("seccion_recursos").style.display = "inline";
-  await fetch(SPREADSHEET_ID + "/oq6pdsq/public/values?alt=json")
+  await fetch(SPREADSHEET + "/oq6pdsq/public/values?alt=json")
     .then((resp) => resp.json())
     .then((materiales) => {
       const r_materiales = materiales.feed.entry;
@@ -98,7 +103,8 @@ async function UpdateRecursos() {
   $("placeholder_recursos").style.display = "none";
   return;
 }
-// Update DataBase: Imagenes
+
+// Update & show: 📷 Imagen Aleatoria 🎲
 async function UpdateImagenes() {
   $("placeholder_simagen").style.display = "none";
   $("seccion_imagen").style.display = "inline";
@@ -119,6 +125,7 @@ async function UpdateImagenes() {
   $("placeholder_imagen").style.display = "none";
   return;
 }
+
 function RunTopSecret() {
   $("🚧seccion_topsecret🚧").style.display = "inline";
   $("🚧seccion_topsecret🚧").hidden = false;

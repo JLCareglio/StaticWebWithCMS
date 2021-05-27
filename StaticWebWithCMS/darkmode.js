@@ -1,3 +1,7 @@
+/* El modo oscuro se aplica automáticamente dependiendo del tema
+actual del dispositivo, pero, si el usuario cambia el tema
+de la página, se guardaran sus preferencias */
+
 const btn_darkmode = document.getElementById("darkmode");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
