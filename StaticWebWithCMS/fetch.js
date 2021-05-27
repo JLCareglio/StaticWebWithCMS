@@ -10,6 +10,15 @@ var $ = function (id) {
 const SPREADSHEET =
   "https://spreadsheets.google.com/feeds/list/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0";
 
+// Si hay datos locales los cargamos primero
+var localstorage1, localstorage2;
+localstorage1 = localStorage.localstorage1 || "";
+localstorage2 = localStorage.localstorage2 || "";
+$("localstorage1").innerHTML = localstorage1;
+$("localstorage2").innerHTML = localstorage2;
+$("placeholder_localstorage").style.display =
+  localstorage1 == "" || localstorage2 == "" ? "inline" : "none";
+
 // En la hoja Secciones vemos cuales estan para mostrar luego se actualizan y se muestran.
 fetchSecciones();
 async function fetchSecciones() {
@@ -30,6 +39,9 @@ async function fetchSecciones() {
   json_secciones[3].gsx$mostrar.$t === "TRUE"
     ? await UpdateImagenes()
     : ($("placeholder_simagen").style.display = "none");
+  json_secciones[5].gsx$mostrar.$t === "TRUE"
+    ? await UpdateLocalStorage()
+    : ($("seccion_localstorage").style.display = "none");
   json_secciones[4].gsx$mostrar.$t === "TRUE" ? RunTopSecret() : null;
 
   // Actualizar los contenidos de seciones de forma simultanea 👩‍💻:
@@ -48,9 +60,9 @@ async function UpdateIntro() {
   await fetch(SPREADSHEET + "/otao8gj/public/values?alt=json")
     .then((resp) => resp.json())
     .then((main) => {
-      document.querySelector("#texto1").innerHTML =
+      document.querySelector("#introduccion1").innerHTML =
         main.feed.entry[0].gsx$contenido.$t;
-      document.querySelector("#texto2").innerHTML =
+      document.querySelector("#introduccion2").innerHTML =
         main.feed.entry[1].gsx$contenido.$t;
     });
   $("placeholder_intro").style.display = "none";
@@ -124,6 +136,36 @@ async function UpdateImagenes() {
     });
   $("placeholder_imagen").style.display = "none";
   return;
+}
+
+// Update: 💾 LocalStorage 💾
+async function UpdateLocalStorage() {
+  await getFromAPI(
+    SPREADSHEET + "/otao8gj/public/values/cre1l?alt=json",
+    function (json) {
+      if (localstorage1 != json.entry.gsx$contenido.$t) {
+        localStorage.localstorage1 = json.entry.gsx$contenido.$t;
+        $("localstorage1").innerHTML = json.entry.gsx$contenido.$t;
+      }
+    }
+  );
+  await getFromAPI(
+    SPREADSHEET + "/otao8gj/public/values/chk2m?alt=json",
+    function (json) {
+      if (localstorage2 != json.entry.gsx$contenido.$t) {
+        localStorage.localstorage2 = json.entry.gsx$contenido.$t;
+        $("localstorage2").innerHTML = json.entry.gsx$contenido.$t;
+      }
+    }
+  );
+  $("placeholder_localstorage").style.display = "none";
+}
+async function getFromAPI(url, callback) {
+  var obj;
+  await fetch(url)
+    .then((res) => res.json())
+    .then((data) => (obj = data))
+    .then(() => callback(obj));
 }
 
 function RunTopSecret() {
