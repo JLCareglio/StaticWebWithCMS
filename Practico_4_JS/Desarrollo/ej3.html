@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP4 Ejercicio 3</title>
+  <style>
+    body {
+      background-color: gray;
+    }
+
+    #capa1 {
+      border: 2px solid black;
+      border-radius: 20px;
+      padding: 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn {
+      color: white;
+      background-color: peru;
+      border: 1px solid black;
+      border-radius: 20px;
+      height: 2.3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="capa1">
+    <input class="btn" type="button" value="Blue" onclick="cambiarColor('blue','capa1')">
+    <input class="btn" type="button" value="Green" onclick="cambiarColor('green','capa1')">
+    <input class="btn" type="button" value="Red" onclick="cambiarColor('red','capa1')">
+    <input class="btn" type="button" value="White" onclick="cambiarColor('white','capa1')">
+  </div>
+
+  <script>
+    function cambiarColor(color, id_destino) {
+      document.getElementById(id_destino).style.backgroundColor = color;
+    }
+  </script>
+</body>
+
+</html>
