@@ -5,10 +5,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TP4 - Ejercicio 7</title>
+  <link rel="stylesheet" href="ej7.css">
 </head>
 
 <body>
-  <h1>Ejemplos de funciones/manejadores de eventos de javascript</h1>
+  <section class="alterados">
+    <article>
+      <input id="conejillo" type="text" value="  Soy un texto alterable 😬">
+    </article>
+  </section>
+  <section class="alteradores">
+    <article>
+      <button onclick="conejillo.value = '  Soy un texto alterable 😬'">
+        Restaurar texto
+      </button>
+    </article>
+    <article>
+      <button onclick="conejillo.value = conejillo.value.toLocaleLowerCase()">
+        toLocaleLowerCase()
+      </button>
+    </article>
+    <article><button onclick="conejillo.value = conejillo.value.toLocaleUpperCase()">toLocaleUpperCase()</button>
+    </article>
+    <article><button onclick="conejillo.value = conejillo.value.trim()">trim()</button>
+    </article>
+    <article>
+      <button onclick="conejillo.value = conejillo.value.substr(s1.value,s2.value)">
+        substr(inicio,fin)
+      </button>
+      <div>
+        <input type="number" id="s1" value="0">
+        <input type="number" id="s2" value="27">
+      </div>
+    </article>
+    <article><button onclick="conejillo.value = conejillo.value.split(sep.value,limite.value)">
+        split(separador,limite)
+      </button>
+      <div>
+        <input type="text" id="sep" value="">
+        <input type="number" id="limite" value="27">
+      </div>
+    </article>
+    <article><button onclick="alert(conejillo.value.startsWith(com1.value))">startsWith(texto)</button>
+      <input type="text" id="com1" value="  S">
+    </article>
+    <article><button onclick="alert(conejillo.value.endsWith(com2.value))">startsWith(texto)</button>
+      <input type="text" id="com2" value="😬">
+    </article>
+    <article><button onclick="alert(conejillo.value.includes(busc.value,pos.value))">
+        includes(buscar,posi)
+      </button>
+      <div>
+        <input type="text" id="busc" value="😬">
+        <input type="number" id="pos" value="0">
+      </div>
+    </article>
+    <article><button onclick="conejillo.value = conejillo.value.replace(exp.value,remp.value)">
+        replace(exp,reemp)
+      </button>
+      <div>
+        <input type="text" id="exp" value="😬">
+        <input type="text" id="remp" value="🤐">
+      </div>
+    </article>
+    <article><button onclick="alert(conejillo.value.indexOf(val1.value,pos1.value))">
+        indexOf(val,posi)
+      </button>
+      <div>
+        <input type="text" id="val1" value="🤐">
+        <input type="number" id="pos1" value="0">
+      </div>
+    </article>
+    <article><button onclick="alert(conejillo.value.lastIndexOf(val2.value,pos2.value))">
+        lastIndexOf(val,posi)
+      </button>
+      <div>
+        <input type="text" id="val2" value="🤐">
+        <input type="number" id="pos2" value="27">
+      </div>
+    </article>
+  </section>
 </body>
 
 </html>
