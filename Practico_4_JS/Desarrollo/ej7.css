@@ -31,7 +31,7 @@ article {
   border-radius: 4px;
 }
 .alteradores article input[type="number"] {
-  width: 24px;
+  width: 42px;
 }
 .alteradores article input[type="text"] {
   width: 60px;
@@ -65,14 +65,4 @@ article {
   border: 2px solid black;
   border-radius: 5px;
   background-color: white;
-}
-
-/* Esconder flechitas en el input de numeros */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
 }
