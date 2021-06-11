@@ -27,6 +27,8 @@ article {
 .alteradores article input {
   border: 0;
   font-size: 1.2rem;
+  padding: 4px 1px;
+  border-radius: 4px;
 }
 .alteradores article input[type="number"] {
   width: 24px;
@@ -55,8 +57,10 @@ article {
   }
 }
 #conejillo {
+  width: 100%;
+  max-width: 420px;
   min-width: 250px;
-  height: 2rem;
+  height: 3rem;
   font-size: 1.3rem;
   border: 2px solid black;
   border-radius: 5px;
