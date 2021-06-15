@@ -26,12 +26,17 @@ article {
   padding: 5px;
   border-radius: 5px;
 }
+.alteradores article button:hover {
+  background-color: #dfeeea;
+}
 .alteradores article input {
+  margin-top: 5px;
   border: 0;
   font-size: 1.2rem;
   padding: 4px 1px;
   border-radius: 4px;
   background-color: #dfeeea;
+  vertical-align: middle;
 }
 .alteradores article input[type="number"] {
   width: 42px;
