@@ -6,8 +6,8 @@
 
 body {
   font: 100% Verdana;
-  background: #333333;
-  color: #fff;
+  background: #2f5d62;
+  color: #dfeeea;
   text-align: center;
   min-width: 284px;
   padding: 0 5px;
@@ -16,19 +16,22 @@ article {
   padding: 10px;
 }
 .alteradores article {
-  background-color: black;
+  background-color: #5e8b7e;
 }
 .alteradores article button {
   border: 0;
   font-size: 1.2rem;
-  background-color: black;
-  color: white;
+  background-color: #a7c4bc;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
 }
 .alteradores article input {
   border: 0;
   font-size: 1.2rem;
   padding: 4px 1px;
   border-radius: 4px;
+  background-color: #dfeeea;
 }
 .alteradores article input[type="number"] {
   width: 42px;
@@ -40,8 +43,8 @@ article {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2px;
-  background-color: white;
-  border: 2px solid white;
+  background-color: #dfeeea;
+  border: 2px solid #dfeeea;
   border-radius: 5px;
   max-width: 700px;
   margin: auto;
@@ -64,5 +67,5 @@ article {
   font-size: 1.3rem;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: white;
+  background-color: #dfeeea;
 }
