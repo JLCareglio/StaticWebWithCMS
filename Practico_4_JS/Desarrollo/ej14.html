@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP4 - Ejercicio 14</title>
+  <link rel="stylesheet" href="ej14.css">
+</head>
+
+<body>
+  <div id="alerta" class="alerta" style="display: none;">
+    esto es una alerta
+  </div>
+  <form name="f1">
+    <input type="text" name="name" id="nombre" placeholder="Nombres">
+    <input type="text" name="lastname" id="apellido" placeholder="Apellidos">
+    <input type="number" name="dni" id="dni" placeholder="DNI">
+    <input type="date" name="birthday" id="nacimiento">
+    <input type="number" name="height" id="altura" min="0" max="3">
+    <input type="number" name="weight" id="peso" min="0">
+    <input type="button" id="btnAgregar" value="Agregar Persona">
+  </form>
+  <hr>
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Nacimiento</th>
+        <th>Altura</th>
+        <th>Peso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alguienzo</td>
+        <td>Algonza</td>
+        <td>18.135.998</td>
+        <td>14/4/1975</td>
+        <td>1.87m</td>
+        <td>49Kg</td>
+      </tr>
+      <!-- Personas generadas en ej10.js -->
+    </tbody>
+  </table>
+  <script src="ej14.js"></script>
+</body>
+
+</html>
