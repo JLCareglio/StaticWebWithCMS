@@ -6,7 +6,7 @@ Una ventaja es que se podra actualizar el contenido sin necesidad de pasar por e
 
 ### Enlace del sitio web:
 
-https://jlcareglio.github.io/DWEB/StaticWebWithCMS/
+https://jlcareglio.github.io/StaticWebWithCMS/index.html
 
 ### Enlace del Google Sheet que altera al sitio web:
 
