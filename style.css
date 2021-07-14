@@ -1,69 +1,149 @@
-@font-face {
-  font-family: JosefinSans;
-  src: url(Fonts/JosefinSans-VariableFont_wght.ttf);
+#seccion_introduccion,
+#seccion_cita,
+#seccion_recursos,
+#seccion_imagen {
+  display: none;
 }
-html {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-}
+
 body {
-  font-family: "JosefinSans";
-  margin: 0px;
+  font: 100% Verdana;
+  background: #333333;
+  color: #fff;
+  text-align: center;
+  margin: 0px auto;
   padding: 0px;
-  box-sizing: border-box;
-  background-color: #212335;
+  max-width: 644px;
+  min-width: 320px;
 }
 main {
-  max-width: 700px;
-  margin: auto;
+  background: var(--bkg-color);
+  color: var(--text-color);
+  padding: 10px 20px;
 }
+a {
+  color: var(--link-color);
+}
+
 h1 {
-  color: #fff;
-  font-size: 40px;
-  padding: 20px;
-  margin: 0px;
+  color: hsl(82, 87%, 50%);
+  margin: 0px 0px 0px 64px;
+  display: inline-block;
+  font-size: 32px;
+}
+@media only screen and (max-width: 500px) {
+  h1 {
+    margin: 0px 0px 0px 64px;
+    width: 186px;
+    display: inline-block;
+  }
+  .switch {
+    top: 18px;
+    transform: rotate(-90deg);
+  }
 }
 h2 {
-  color: #fff;
-  font-size: 30px;
-  padding-top: 20px;
+  color: var(--title-color);
   margin: 0px;
+  padding-top: 20px;
 }
+
+header,
 footer {
-  color: #fff;
-  background-color: #000;
-  padding: 5px 0px;
-  max-width: 700px;
+  background-color: #7777;
+}
+
+img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+ol {
+  text-align: left;
+  max-width: 500px;
   margin: auto;
 }
 
-.text-left {
-  text-align: left;
+/* Variables para el modo oscuro */
+body {
+  --text-color: #222;
+  --bkg-color: #fff;
+  --link-color: #0033cc;
+  --title-color: hsl(82, 77%, 37%);
 }
-.collapsible {
-  background-color: rgba(119, 119, 119, 0.8);
-  color: white;
+body.dark-theme {
+  --text-color: #eee;
+  --bkg-color: #121212;
+  --link-color: #809fff;
+  --title-color: hsl(82, 77%, 60%);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  body {
+    --text-color: #eee;
+    --bkg-color: #121212;
+    --link-color: #809fff;
+    --title-color: hsl(82, 77%, 60%);
+  }
+  body.light-theme {
+    --text-color: #222;
+    --bkg-color: #fff;
+    --link-color: #0033cc;
+    --title-color: hsl(82, 77%, 37%);
+  }
+}
+/* Slider para el modo oscuro */
+.switch {
+  position: relative;
+  display: inline;
+  margin: 2px;
+  float: right;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  font-weight: bold;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196f3;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
 }
 
-.active,
-.collapsible:hover {
-  background-color: rgba(85, 85, 85, 0.9);
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
 }
 
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1dc;
+input:checked + .slider {
+  background-color: #f2a122;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #f2a122;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }

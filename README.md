@@ -1,7 +1,13 @@
-## Contenido del repositorio:
+## Bienvenido a StaticWebWithCMS
 
-- [This](https://jlcareglio.github.io/DWEB/)
-- [Practico 2 HTML](https://jlcareglio.github.io/DWEB/Practico_2_HTML/index.html)
-- [Practico 3 CSS](https://jlcareglio.github.io/DWEB/Practico_3_CSS/)
-- [Practico 4 JS](https://jlcareglio.github.io/DWEB/Practico_4_JS/)
-- [StaticWebWithCMS_Experimento](https://jlcareglio.github.io/DWEB/StaticWebWithCMS/)
+En este experimento busco crear una web estatica donde la misma se construya y comlete tomando datos de un Google Sheets.
+
+Una ventaja es que se podra actualizar el contenido sin necesidad de pasar por el codigo; algo IDEAL para entregar al administrador final de un sitio web estatico que desea poder modificar algunas secciones de su sitio manejando algo tan simple como lo son las hojas de calculo de Google.
+
+### Enlace del sitio web:
+
+https://jlcareglio.github.io/DWEB/StaticWebWithCMS/
+
+### Enlace del Google Sheet que altera al sitio web:
+
+https://docs.google.com/spreadsheets/d/1CqMc1KeVl39WRYyrYeszZu1EQVoUB7Lxprroi2iSsc0
