@@ -59,10 +59,8 @@ async function UpdateIntro() {
   await fetch(SPREADSHEET + "/Parrafos")
     .then((resp) => resp.json())
     .then((main) => {
-      document.querySelector("#introduccion1").innerHTML =
-        main[0].Contenido;
-      document.querySelector("#introduccion2").innerHTML =
-        main[1].Contenido;
+      document.querySelector("#introduccion1").innerHTML = main[0].Contenido;
+      document.querySelector("#introduccion2").innerHTML = main[1].Contenido;
     });
   $("placeholder_intro").style.display = "none";
   return;
@@ -119,39 +117,37 @@ async function UpdateRecursos() {
 async function UpdateImagenes() {
   $("placeholder_simagen").style.display = "none";
   $("seccion_imagen").style.display = "inline";
-  let random = Math.floor(Math.random() * 100);
-  await fetch(
-    "https://jsonplaceholder.typicode.com/albums/" + random + "/photos"
-  )
-    .then((resp) => resp.json())
-    .then((fotos) => {
-      random = Math.floor(Math.random() * fotos.length);
-      const img = document.createElement("img");
-      const figcaption = document.createElement("figcaption");
-      img.setAttribute("src", `${fotos[random].url}`);
-      figcaption.appendChild(document.createTextNode(`${fotos[random].title}`));
-      $("imagen").appendChild(img);
-      $("imagen").appendChild(figcaption);
-    });
-  $("placeholder_imagen").style.display = "none";
+  (async () => {
+    const foto = new Image();
+    foto.src = "https://thispersondoesnotexist.com/image";
+    await foto.decode();
+    const img = document.createElement("img");
+    const figcaption = document.createElement("figcaption");
+    const figcaptionUrl = document.createElement("a");
+    img.setAttribute("src", foto.src);
+    figcaptionUrl.setAttribute("href", "https://thispersondoesnotexist.com");
+    figcaptionUrl.setAttribute("target", "_blank");
+    figcaptionUrl.innerText = "this person does not exist";
+    figcaption.appendChild(figcaptionUrl);
+    $("imagen").appendChild(img);
+    $("imagen").appendChild(figcaption);
+    $("placeholder_imagen").style.display = "none";
+  })();
   return;
 }
 
 // Update: 💾 LocalStorage 💾
 async function UpdateLocalStorage() {
-  await getFromAPI(
-    SPREADSHEET + "/Parrafos",
-    function (json) {
-      if (localstorage1 != json[2].Contenido) {
-        localStorage.localstorage1 = json[2].Contenido;
-        $("localstorage1").innerHTML = json[2].Contenido;
-      }
-      if (localstorage2 != json[3].Contenido) {
-        localStorage.localstorage2 = json[3].Contenido;
-        $("localstorage2").innerHTML = json[3].Contenido;
-      }
+  await getFromAPI(SPREADSHEET + "/Parrafos", function (json) {
+    if (localstorage1 != json[2].Contenido) {
+      localStorage.localstorage1 = json[2].Contenido;
+      $("localstorage1").innerHTML = json[2].Contenido;
     }
-  );
+    if (localstorage2 != json[3].Contenido) {
+      localStorage.localstorage2 = json[3].Contenido;
+      $("localstorage2").innerHTML = json[3].Contenido;
+    }
+  });
   $("placeholder_localstorage").style.display = "none";
 }
 async function getFromAPI(url, callback) {
