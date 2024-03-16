@@ -2,8 +2,6 @@
 
 En este experimento busco crear una web estática donde la misma se construya y complete tomando datos de un Google Sheets.
 
-Una ventaja es que se podrá actualizar el contenido sin necesidad de pasar por el código; algo IDEAL para entregar al administrador final de un sitio web estático que desea poder modificar algunas secciones de su sitio manejando algo tan simple como lo son las hojas de cálculo de Google.
-
 ### Enlace del sitio web:
 
 https://jlcareglio.github.io/StaticWebWithCMS/index.html
